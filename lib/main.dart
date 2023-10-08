@@ -1,3 +1,4 @@
+import 'package:calculadora/config/theme/app_theme.dart';
 import 'package:calculadora/presentation/calculadora/calculadora.dart';
 import 'package:calculadora/presentation/providers/display_provider.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class MainApp extends StatelessWidget {
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => DisplayProvider())],
       child: MaterialApp(
+        theme: AppTheme().theme(),
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(title: const Text('Calculadora'), centerTitle: true),
