@@ -46,67 +46,56 @@ class Calculadora extends StatelessWidget {
                     content: '7',
                     func: () {
                       displayProvider.displayPrint('7');
-                      displayProvider.expresion.agregarDigito('7');
                     }),
                 CalculatorButton(
                     content: '4',
                     func: () {
                       displayProvider.displayPrint('4');
-                      displayProvider.expresion.agregarDigito('4');
                     }),
                 CalculatorButton(
                     content: '1',
                     func: () {
                       displayProvider.displayPrint('1');
-                      displayProvider.expresion.agregarDigito('1');
                     }),
                 CalculatorButton(
                     content: '0',
                     func: () {
                       displayProvider.displayPrint('0');
-                      displayProvider.expresion.agregarDigito('0');
                     }),
                 CalculatorButton(
                     content: '8',
                     func: () {
                       displayProvider.displayPrint('8');
-                      displayProvider.expresion.agregarDigito('8');
                     }),
                 CalculatorButton(
                     content: '5',
                     func: () {
                       displayProvider.displayPrint('5');
-                      displayProvider.expresion.agregarDigito('5');
                     }),
                 CalculatorButton(
                     content: '2',
                     func: () {
                       displayProvider.displayPrint('2');
-                      displayProvider.expresion.agregarDigito('2');
                     }),
                 CalculatorButton(
                     content: '.',
                     func: () {
                       displayProvider.displayPrint('.');
-                      displayProvider.expresion.agregarDigito('.');
                     }),
                 CalculatorButton(
                     content: '9',
                     func: () {
                       displayProvider.displayPrint('9');
-                      displayProvider.expresion.agregarDigito('9');
                     }),
                 CalculatorButton(
                     content: '6',
                     func: () {
                       displayProvider.displayPrint('6');
-                      displayProvider.expresion.agregarDigito('6');
                     }),
                 CalculatorButton(
                     content: '3',
                     func: () {
                       displayProvider.displayPrint('3');
-                      displayProvider.expresion.agregarDigito('3');
                     }),
                 CalculatorButton(
                     content: 'EXP',
@@ -121,23 +110,18 @@ class Calculadora extends StatelessWidget {
                 CalculatorButton(
                     content: 'X',
                     func: () {
-                      displayProvider.displayPrint('X');
-                      displayProvider.expresion.agregarOperador('*');
+                      displayProvider.displayPrint('*');
                     }),
                 CalculatorButton(
                     content: '+',
                     func: () {
                       displayProvider.displayPrint('+');
-                      displayProvider.expresion.agregarOperador('+');
                     }),
                 CalculatorButton(
                     content: 'ANS',
                     func: () {
                       String auxAns = displayProvider.ans.toString();
-                      displayProvider.displayPrint('ANS');
-                      for (int i = 0; i < auxAns.length; i++) {
-                        displayProvider.expresion.agregarDigito(auxAns[i]);
-                      }
+                      displayProvider.displayPrint(auxAns);
                     }),
                 CalculatorButton(
                     content: 'AC',
@@ -148,13 +132,11 @@ class Calculadora extends StatelessWidget {
                     content: '/',
                     func: () {
                       displayProvider.displayPrint('/');
-                      displayProvider.expresion.agregarOperador('/');
                     }),
                 CalculatorButton(
                     content: '-',
                     func: () {
                       displayProvider.displayPrint('-');
-                      displayProvider.expresion.agregarOperador('-');
                     }),
                 CalculatorButton(
                     content: '=',

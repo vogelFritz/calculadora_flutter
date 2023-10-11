@@ -23,18 +23,14 @@ class DisplayProvider extends ChangeNotifier {
   }
 
   void displayPrintResult() {
-    int iAct;
-    if (expresion.raiz != -1) {
-      iAct = expresion.raiz;
-      while (expresion.arbol[iAct].der != -1) {
-        iAct = expresion.arbol[iAct].der;
+    for (int i = 0; i < display.length; i++) {
+      if (Expresion.strNum.contains(display[i])) {
+        expresion.agregarDigito(display[i]);
+      } else {
+        expresion.agregarOperador(display[i]);
       }
-      expresion.arbol.add(NodoArbol(elem: expresion.numAct));
-      expresion.arbol[iAct].der = expresion.arbol.length - 1;
-    } else {
-      expresion.raiz = 0;
-      expresion.arbol.add(NodoArbol(elem: expresion.numAct));
     }
+    expresion.insertarEnExtremoDerecho(expresion.numAct);
     ans = expresion.resultado(expresion.raiz);
     result = ans.toString();
     displayReset();

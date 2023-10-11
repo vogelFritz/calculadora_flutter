@@ -1,48 +1,41 @@
 class Expresion {
-  final strNum = ['.', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-
+  static const strNum = ['.', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  int extremoDerecho = -1;
   int raiz = -1;
   String numAct = '';
   List<NodoArbol> arbol = [];
+
   void agregarDigito(String elem) {
     if (strNum.contains(elem)) {
       numAct = numAct + elem;
     }
   }
 
+  void insertarEnExtremoDerecho(String elem) {
+    arbol.add(NodoArbol(elem: elem));
+    if (extremoDerecho != -1) {
+      arbol[extremoDerecho].der = arbol.length - 1;
+    } else {
+      raiz = 0;
+    }
+    extremoDerecho = arbol.length - 1;
+  }
+
+  void insertarEnRaiz(String elem) {
+    arbol.add(NodoArbol(elem: elem, izq: raiz));
+    raiz = arbol.length - 1;
+    extremoDerecho = raiz;
+  }
+
   void agregarOperador(String elem) {
     if (elem == '+' || elem == '-') {
-      int iAct;
-      if (raiz != -1) {
-        iAct = raiz;
-        while (arbol[iAct].der != -1) {
-          iAct = arbol[iAct].der;
-        }
-        arbol.add(NodoArbol(elem: numAct));
-        arbol[iAct].der = arbol.length - 1;
-      } else {
-        raiz = 0;
-        arbol.add(NodoArbol(elem: numAct));
-      }
+      insertarEnExtremoDerecho(numAct);
       numAct = '';
-      arbol.add(NodoArbol(elem: elem, izq: raiz));
-      raiz = arbol.length - 1;
+      insertarEnRaiz(elem);
     } else if (elem == '*' || elem == '/') {
-      int iAct;
-      // arbol.add(NodoArbol(elem: elem));
-      if (raiz != -1) {
-        iAct = raiz;
-        while (arbol[iAct].der != -1) {
-          iAct = arbol[iAct].der;
-        }
-        arbol.add(NodoArbol(elem: elem));
-        arbol[iAct].der = arbol.length - 1;
-      } else {
-        raiz = 0;
-        arbol.add(NodoArbol(elem: elem));
-      }
+      insertarEnExtremoDerecho(elem);
       arbol.add(NodoArbol(elem: numAct));
-      arbol[arbol.length - 2].izq = arbol.length - 1;
+      arbol[extremoDerecho].izq = arbol.length - 1;
       numAct = '';
     }
   }
